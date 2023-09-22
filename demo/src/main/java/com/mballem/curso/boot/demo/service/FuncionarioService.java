@@ -2,6 +2,7 @@ package com.mballem.curso.boot.demo.service;
 
 import com.mballem.curso.boot.demo.domain.Funcionario;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface FuncionarioService {
@@ -15,4 +16,10 @@ public interface FuncionarioService {
     Funcionario buscarPorId(Long id);
 
     List<Funcionario> buscarTodos();
+
+    List<Funcionario> buscarPorNome(String nome);
+
+    List<Funcionario> buscarPorCargo(Long id);
+
+    List<Funcionario> buscarPorDatas(LocalDate entrada, LocalDate saida);
 }

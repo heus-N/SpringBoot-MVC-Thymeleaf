@@ -9,8 +9,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractDao<T, PK extends Serializable> {
-
-    private final Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    @SuppressWarnings("unchecked")
+    private final Class<T> entityClass = (Class<T>) ( (ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -36,7 +36,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     public List<T> findAll(){
-        return entityManager.createQuery("from" + entityClass.getSimpleName(), entityClass).getResultList();
+        return entityManager.createQuery("from " + entityClass.getSimpleName(), entityClass).getResultList();
     }
 
     protected List<T> createQuery(String jpql, Object... params){

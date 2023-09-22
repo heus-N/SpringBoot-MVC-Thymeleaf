@@ -13,7 +13,7 @@ body {
 /*
  * main layout
  */
-.layout-main {
+.layout-main{
     display: flex;
     min-height: calc(100vh - 52px);
     overflow: hidden;

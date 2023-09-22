@@ -24,8 +24,10 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         AbstractEntity<?> that = (AbstractEntity<?>) o;
         return id.equals(that.id);
     }
