@@ -1,6 +1,9 @@
 package com.mballem.curso.boot.demo.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -8,9 +11,12 @@ import java.util.List;
 @Table(name = "CARGOS")
 public class Cargo extends AbstractEntity<Long>{
 
+    @NotBlank(message = "O nome do cargo é obrigatório.")
+    @Size(max = 60, message = "O nome do cargo deve ter no máximo {max} caracteres.")
     @Column(name = "nome", nullable = false, unique = true, length = 60)
     private String nome;
 
+    @NotNull(message = "Selecione o departamento relativo ao cargo. ")
     @ManyToOne
     @JoinColumn(name = "id_departamento_fk")
     private Departamento departamento;
